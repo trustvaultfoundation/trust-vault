@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="TrustVault — the all-in-one encrypted workspace">
+  <defs>
+    <linearGradient id="tv-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#4338ca"/>
+    </linearGradient>
+    <radialGradient id="tv-glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0" stop-color="#312e81" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#020617"/>
+  <rect width="1200" height="630" fill="url(#tv-glow)"/>
+  <!-- mark -->
+  <g transform="translate(497 96)">
+    <rect width="206" height="206" rx="48" fill="url(#tv-bg)"/>
+    <path d="M103 35 L158 56 V99.5 C158 133 134 159 103 170.5 C72 159 48 133 48 99.5 V56 Z" fill="#fff"/>
+    <circle cx="103" cy="93.5" r="16.7" fill="#4338ca"/>
+    <path d="M96.5 98.3 H109.5 L114.7 138.5 H91.3 Z" fill="#4338ca"/>
+  </g>
+  <!-- wordmark -->
+  <text x="600" y="400" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="92" font-weight="800" letter-spacing="-2">
+    <tspan fill="#ffffff">Trust</tspan><tspan fill="#818cf8">Vault</tspan>
+  </text>
+  <!-- tagline -->
+  <text x="600" y="468" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="#94a3b8">The all-in-one encrypted workspace, kept forever.</text>
+  <!-- chips -->
+  <text x="600" y="540" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="500" letter-spacing="3" fill="#6366f1">FREE · ENCRYPTED · PERMANENT</text>
+</svg>

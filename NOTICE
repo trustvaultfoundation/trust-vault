@@ -1,0 +1,25 @@
+TrustVault
+Copyright (c) 2026 TrustVault. All rights reserved.
+
+This software (the "Licensed Work") is made available under the
+Business Source License 1.1 (BUSL-1.1). See the LICENSE file for the full terms.
+
+Summary (not a substitute for the LICENSE):
+  - Source-available: you may read, copy, modify, and make NON-PRODUCTION use
+    of the code (e.g. review, audit, and local testing).
+  - Production and commercial use are NOT granted by default
+    (Additional Use Grant: None). For a production/commercial license or a
+    targeted exception, contact the Licensor.
+  - Change Date: 2030-07-02. On that date the Licensed Work automatically
+    converts to the Change License (Apache License, Version 2.0).
+
+"Business Source License" is a trademark of MariaDB Corporation Ab.
+
+---
+
+TrustVault is an end-to-end encrypted, on-chain workspace built on the Arweave
+permaweb. It bundles third-party open-source libraries, each retaining its own
+license (see package.json / node_modules), including but not limited to:
+Next.js, React, Tailwind CSS, Tiptap, Excalidraw, arweave-js, arbundles, the
+ar.io SDK, and the Irys/Turbo SDKs. Those components remain under their
+respective licenses; the BUSL-1.1 terms above apply to TrustVault's own code.

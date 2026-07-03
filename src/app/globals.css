@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  /* Geist Mono isn't loaded — fall back to a real monospace stack so font-mono
+     (wallet addresses) stays monospaced instead of silently breaking. */
+  --font-mono: var(--font-geist-mono, ui-monospace), SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  /* Use the Geist font that layout.tsx loads via next/font. Without this the
+     font is preloaded but never applied — which triggers the browser's
+     "preloaded but not used within a few seconds" console warning. */
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Themed scrollbars — applies to every scrollable area in the app. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(51 65 85) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(51 65 85);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(99 102 241);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Tailwind v4's Preflight resets interactive elements to `cursor: default`
+   (a deliberate change from v3). Restore the pointer for buttons/links/etc. across
+   every browser — disabled controls keep the default arrow. */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  label[for],
+  select:not(:disabled),
+  summary,
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Sidebar icon hover animations */
+@keyframes gtv-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-13deg); }
+  60% { transform: rotate(9deg); }
+  85% { transform: rotate(-4deg); }
+}
+
+/* react-grid-layout — dark-theme overrides (default placeholder is pink and the
+   resize handle is an invisible dark SVG on our dark background). */
+.react-grid-item.react-grid-placeholder {
+  background: rgb(99 102 241 / 0.22) !important;
+  border-radius: 0.75rem;
+}
+.react-grid-item.react-grid-item--resizing,
+.react-grid-item.react-draggable-dragging {
+  z-index: 30;
+}
+.react-resizable-handle {
+  background-image: none !important;
+  width: 22px;
+  height: 22px;
+  z-index: 5;
+  padding: 0;
+}
+.react-resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid rgb(100 116 139);
+  border-bottom: 2px solid rgb(100 116 139);
+  border-bottom-right-radius: 3px;
+  transition: border-color 0.15s;
+}
+.react-grid-item:hover .react-resizable-handle::after {
+  border-color: rgb(129 140 248);
+}
+.react-grid-item > :not(.react-resizable-handle) {
+  height: 100%;
+}
+
+/* Rich text (Tiptap) rendered + editor content — board tickets */
+.gtv-rte { line-height: 1.5; }
+.gtv-rte > p { margin: 0 0 0.4rem; }
+.gtv-rte > :last-child { margin-bottom: 0; }
+.gtv-rte ul { list-style: disc; padding-left: 1.25rem; margin: 0 0 0.4rem; }
+.gtv-rte ol { padding-left: 1.25rem; margin: 0 0 0.4rem; }
+.gtv-rte ol:not([type]), .gtv-rte ol[type="1"] { list-style-type: decimal; }
+.gtv-rte ol[type="a"] { list-style-type: lower-alpha; }
+.gtv-rte ol[type="A"] { list-style-type: upper-alpha; }
+.gtv-rte ol[type="i"] { list-style-type: lower-roman; }
+.gtv-rte li { margin: 0.1rem 0; }
+.gtv-rte li > p { margin: 0; }
+.gtv-rte a { color: #a5b4fc; text-decoration: underline; }
+.gtv-rte code { background: rgba(148,163,184,0.15); padding: 0.05rem 0.25rem; border-radius: 0.25rem; font-size: 0.85em; }
+.gtv-rte pre { background: rgba(148,163,184,0.12); padding: 0.5rem 0.6rem; border-radius: 0.4rem; overflow-x: auto; margin: 0 0 0.4rem; }
+.gtv-rte pre code { background: none; padding: 0; }
+.gtv-rte h1 { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0 0.3rem; }
+.gtv-rte h2 { font-size: 1.25rem; font-weight: 700; margin: 0.5rem 0 0.3rem; }
+.gtv-rte h3 { font-size: 1.1rem; font-weight: 600; margin: 0.4rem 0 0.3rem; }
+.gtv-rte h4 { font-size: 1rem; font-weight: 600; margin: 0.4rem 0 0.3rem; }
+.gtv-rte h5 { font-size: 0.9rem; font-weight: 600; margin: 0.3rem 0; }
+.gtv-rte h6 { font-size: 0.8rem; font-weight: 600; margin: 0.3rem 0; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.03em; }
+.gtv-rte blockquote { border-left: 2px solid #475569; padding-left: 0.6rem; color: #cbd5e1; margin: 0 0 0.4rem; }
+.gtv-rte.ProseMirror:focus { outline: none; }
+
+/* Rich text: images + tables (Tiptap, board docs/tickets) */
+.gtv-rte img { max-width: 100%; height: auto; border-radius: 0.4rem; margin: 0.35rem 0; }
+.gtv-rte .tableWrapper { overflow-x: auto; margin: 0.5rem 0; padding-bottom: 0.15rem; }
+/* width:max-content + min-width:100% lets a table fill the space by default but
+   grow WIDER than it when columns are resized — the .tableWrapper then shows our
+   themed horizontal scrollbar (see the global ::-webkit-scrollbar rules). */
+.gtv-rte table { border-collapse: collapse; width: max-content; min-width: 100%; table-layout: fixed; font-size: 0.9em; }
+.gtv-rte td, .gtv-rte th { position: relative; border: 1px solid #334155; padding: 0.3rem 0.5rem; vertical-align: top; min-width: 2rem; }
+.gtv-rte th { background: rgba(148,163,184,0.1); font-weight: 600; text-align: left; }
+.gtv-rte .selectedCell::after { content: ""; position: absolute; inset: 0; background: rgba(99,102,241,0.18); pointer-events: none; }
+.gtv-rte .column-resize-handle { position: absolute; right: -2px; top: 0; bottom: 0; width: 4px; background: #6366f1; cursor: col-resize; }
+
+/* Sidebar collapse — no-flash on load. An inline script in app/layout.tsx sets `gtv-sb-collapsed`
+   on <html> from the saved preference BEFORE first paint, so the sidebar renders at its collapsed
+   width immediately instead of animating open→collapsed when arriving on a page. Higher specificity
+   than Tailwind's w-* utilities, so it wins without !important; the toggle keeps the class in sync. */
+html.gtv-sb-collapsed aside.gtv-sidebar { width: 4rem; }
+html.gtv-sb-collapsed aside.gtv-sidebar .gtv-sb-label { display: none; }
