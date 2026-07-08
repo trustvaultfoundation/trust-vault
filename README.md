@@ -41,11 +41,11 @@ the people you choose:
 | Area | What it does |
 | --- | --- |
 | 🔐 **Vault** | Encrypted document storage on Arweave — upload, decrypt, download, and share files with specific people or with a password (for recipients who don't have a wallet). |
-| 🗂️ **Boards** | Jira-style kanban boards with tickets, columns, comments, worklogs, roles and shared collaboration over an encrypted event log. |
+| 🗂️ **Boards** | Kanban boards with tickets, columns, comments, worklogs, roles and shared collaboration over an encrypted event log. |
 | 💬 **Chat** | End-to-end encrypted multi-party group chats with the people in your Access Keys. |
 | 📅 **Calendar** | Personal and shared events, reminders, and board due-dates in one place. |
 | ⏱️ **Timesheet** | Log the hours you work per board/project, with manager approval flows. |
-| 🛎️ **Service Desk** | ServiceNow-style incidents / requests / changes / problems with a priority matrix, approvals and SLAs. |
+| 🛎️ **Service Desk** | Incidents / requests / changes / problems / and more with a priority matrix, approvals and SLAs. |
 | 📖 **Documentation** | A per-board wiki with a rich-text editor, nested pages and whiteboards. |
 | 📊 **Dashboard** | Analytics across your documents, boards and service-desk teams. |
 | 👤 **Profiles & Access Keys** | On-chain public profiles, an encrypted address book, and the identities you share things with. |
